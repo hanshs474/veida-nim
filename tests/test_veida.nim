@@ -1,4 +1,4 @@
-import std/[json, os, unittest]
+import std/[json, os, strutils, unittest]
 import veida
 
 suite "veida SDK":
