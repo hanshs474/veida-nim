@@ -10,10 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: jirutka/setup-nim@v1
+      - uses: jiro4989/setup-nim-action@v1
         with:
           nim-version: '2.0.8'
       - name: Run unit tests and live anonymous generation probe
         env:
           VEIDA_LIVE_TEST: '1'
-        run: nimble test -y
+        run: |
+          nimble test -y
+          nim c -r -d:ssl --path:src tests/test_veida.nim
